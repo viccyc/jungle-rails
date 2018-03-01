@@ -132,5 +132,30 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+## USERS
+
+# puts "Creating Users ..."
+
+# user1 = User.find_or_create_by!({  
+#   first_name: 'Viccy',
+#   last_name: 'Carver',
+#   email: 'viccy@viccy.com',
+#   password_digest: 'zzzzzz'
+# })
+
+
+# # user2.users.create!({
+#   first_name: 'Lennon',
+#   last_name: 'Grace',
+#   email: 'lennon@lennon.com',
+#   password_digest: 'zzzzzz'
+# })
+
+# user3.users.create!({
+#   first_name: 'Emma',
+#   last_name: 'Carver',
+#   email: 'emma@emma.com',
+#   password_digest: 'zzzzzz'
+# })
 
 puts "DONE!"
