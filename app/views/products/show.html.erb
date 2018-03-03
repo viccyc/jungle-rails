@@ -1,7 +1,7 @@
 <section class="products-show">
 
   <header class="page-header">
-    <h1><%= link_to @product.category.name, @product.category %> &raquo; <%= @product.name %></h1>
+    <h1><%= link_to @product.category.name, @product.category%> &raquo; <%= @product.name %></h1>
   </header>
 
   <article class="product-detail">
@@ -24,6 +24,37 @@
           <dd><%= @product.price %></dd>
         </dl>
       </div>
+    </div>
+
+    <div class="row">
+      <dl class="dl-horizontal">
+      <h4>Reviews</h4>
+        <%= form_for @review, :url => product_reviews_path(@product)  do |product_reviews| %>
+          <%= product_reviews.fields_for :reviews do |f| %>
+            <%= f.label :name %>:
+            <%= f.text_field :first_name %><br />
+          
+            <%= f.label :comment %>:
+            <%= f.text_field :description %><br />
+          
+            <%= f.label :rating %>:
+            <%= f.select :rating, (1..5) %><br />
+        
+          <% end %>
+          <%= product_reviews.submit%>
+
+        <% end %>
+        <% @product.reviews.each do |review| %>
+          <dl>
+            <dt>User</dt>
+            <dd><strong><%= review.user.first_name %></strong></dd>
+            <dt>Comment</dt>
+            <dd><%= review.description %></dd>
+            <dt>Rating</dt>
+            <dd><%= review.rating %></dd>
+          </dl>
+        <% end %>
+      </dl>
     </div>
 
   </article>

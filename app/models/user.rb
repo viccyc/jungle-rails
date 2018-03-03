@@ -1,8 +1,8 @@
 require 'bcrypt'
 
 class User < ActiveRecord::Base
-  # attr_accessor :password, :password_confirmation
   include BCrypt
+  has_many :reviews
 
   def password
     @password ||= Password.new(password_digest)

@@ -134,28 +134,61 @@ cat3.products.create!({
 
 ## USERS
 
-# puts "Creating Users ..."
+puts "Creating Users ..."
 
-# user1 = User.find_or_create_by!({  
-#   first_name: 'Viccy',
-#   last_name: 'Carver',
-#   email: 'viccy@viccy.com',
-#   password_digest: 'zzzzzz'
-# })
+User.find_or_create_by!({  
+  first_name: 'Viccy',
+  last_name: 'Carver',
+  email: 'viccy@viccy.com',
+  password_digest: BCrypt::Password.create('zzzzzz')
+})
+
+User.find_or_create_by!({
+  first_name: 'Matt',
+  last_name: 'Grace',
+  email: 'matt@matt.com',
+  password_digest: BCrypt::Password.create('zzzzzz')
+})
+
+User.find_or_create_by!({
+  first_name: 'Emma',
+  last_name: 'Carver',
+  email: 'emma@emma.com',
+  password_digest: BCrypt::Password.create('zzzzzz')
+})
+
+## REVIEWS
+
+puts "Creating Reviews ..."
+
+Review.find_or_create_by!({  
+  product_id: 1,
+  user_id: 1,
+  description: 'Great!',
+  rating: 5
+})
+
+Review.find_or_create_by!({  
+  product_id: 2,
+  user_id: 1,
+  description: 'Amazeballs!',
+  rating: 5
+})
 
 
-# # user2.users.create!({
-#   first_name: 'Lennon',
-#   last_name: 'Grace',
-#   email: 'lennon@lennon.com',
-#   password_digest: 'zzzzzz'
-# })
+Review.find_or_create_by!({  
+  product_id: 2,
+  user_id: 3,
+  description: 'Soooo gooood!',
+  rating: 4
+})
 
-# user3.users.create!({
-#   first_name: 'Emma',
-#   last_name: 'Carver',
-#   email: 'emma@emma.com',
-#   password_digest: 'zzzzzz'
-# })
+
+Review.find_or_create_by!({  
+  product_id: 6,
+  user_id: 5,
+  description: 'Bit rubbish!',
+  rating: 2
+})
 
 puts "DONE!"
