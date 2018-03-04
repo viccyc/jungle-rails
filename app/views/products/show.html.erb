@@ -29,22 +29,21 @@
     <div class="row">
       <dl class="dl-horizontal">
       <h4>Reviews</h4>
-        <%= form_for @review, :url => product_reviews_path(@product)  do |product_reviews| %>
-          <%= product_reviews.fields_for :reviews do |f| %>
-            <%= f.label :name %>:
-            <%= f.text_field :first_name %><br />
-          
-            <%= f.label :comment %>:
-            <%= f.text_field :description %><br />
-          
-            <%= f.label :rating %>:
-            <%= f.select :rating, (1..5) %><br />
-        
-          <% end %>
-          <%= product_reviews.submit%>
+      <% if @user %>
+        <%= form_for [@product, @review] do |form| %>
+            <%= form.hidden_field :product_id, :value => @product.id %>
+            <%= form.hidden_field :user_id, :value => @user.id %>
 
+            <%= form.label :comment %>:
+            <%= form.text_field :description %><br />
+          
+            <%= form.label :rating %>:
+            <%= form.select :rating, (1..5) %><br />
+        
+          <%= form.submit %>
         <% end %>
-        <% @product.reviews.each do |review| %>
+      <% end %>
+        <% @product.reviews.reverse_each do |review| %>
           <dl>
             <dt>User</dt>
             <dd><strong><%= review.user.first_name %></strong></dd>
@@ -53,6 +52,9 @@
             <dt>Rating</dt>
             <dd><%= review.rating %></dd>
           </dl>
+        <% if review.user == current_user %>
+        <%= link_to "delete", [@product, review], method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
         <% end %>
       </dl>
     </div>

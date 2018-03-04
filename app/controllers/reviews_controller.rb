@@ -1,24 +1,35 @@
 class ReviewsController < ApplicationController
-  def create
-    binding.pry
-    @review = Review.new(reviews_params)
-    @review.user = current_user
+  before_action :require_login
 
-    if @review.save
-      redirect_to :back
-    else
-      redirect_to :product_reviews_path 
-    end
+  def create
+    @review = Review.create(reviews_params)
+    redirect_to :back
+  end
+
+  def destroy
+    Review.find(params[:id]).destroy
+    redirect_to :back
   end
 
   private
 
   def reviews_params
-    params.permit(
-      :rating,
-      :description,
-      :product_id,
-      :user_id
-      )
+    params.require(:review).permit(:product_id, :user_id, :description, :rating)
+  end
+
+  def require_login
+    unless logged_in?
+      flash[:error] = "You must be logged in to access this section"
+      redirect_to new_login_url # halts request cycle
+    end
+  end
+
+  # The logged_in? method simply returns true if the user is logged
+  # in and false otherwise. It does this by "booleanizing" the
+  # current_user method we created previously using a double ! operator.
+  # Note that this is not common in Ruby and is discouraged unless you
+  # really mean to convert something into true or false.
+  def logged_in?
+    !!current_user
   end
 end
