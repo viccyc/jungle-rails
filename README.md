@@ -30,11 +30,9 @@ More information in their docs: <https://stripe.com/docs/testing#cards>
 
 ### Screenshots
 
-!["Screenshot of chatt app in action"](https://github.com/viccyc/chatty-app/blob/master/docs/Screen%20Shot%202018-02-22%20at%2020.26.48.png)
-
-!["Homepage and products"](https://github.com/viccyc/jungle-rails/blob/master/docs/Products.pages)
-!["Cart order items"](https://github.com/viccyc/jungle-rails/blob/master/docs/Cart%20order%20items.pages)
-!["Email order confirmation"](https://github.com/viccyc/jungle-rails/blob/master/docs/email%20order%20conf.pages)
-!["Login auth pages"](https://github.com/viccyc/jungle-rails/blob/master/docs/Login%20auth.pages)
-!["Admin pages"](https://github.com/viccyc/jungle-rails/blob/master/docs/Admin.pages)
-!["Admin and sold out"](https://github.com/viccyc/jungle-rails/blob/master/docs/Admin%20sold%20out.pages)
+!["Homepage and products"](https://github.com/viccyc/jungle-rails/blob/master/docs/Products.png)
+!["Cart order items"](https://github.com/viccyc/jungle-rails/blob/master/docs/cart%20order%20items.png)
+!["Email order confirmation"](https://github.com/viccyc/jungle-rails/blob/master/docs/email%20order%20conf.png)
+!["Login auth pages"](https://github.com/viccyc/jungle-rails/blob/master/docs/Login%20auth.png)
+!["Admin pages"](https://github.com/viccyc/jungle-rails/blob/master/docs/Admin.png)
+!["Admin and sold out"](https://github.com/viccyc/jungle-rails/blob/master/docs/Admin%20sold%20out.png)
