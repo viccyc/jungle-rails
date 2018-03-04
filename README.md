@@ -28,7 +28,9 @@ More information in their docs: <https://stripe.com/docs/testing#cards>
 * PostgreSQL 9.x
 * Stripe
 
-## Screenshots
+### Screenshots
+
+!["Screenshot of chatt app in action"](https://github.com/viccyc/chatty-app/blob/master/docs/Screen%20Shot%202018-02-22%20at%2020.26.48.png)
 
 !["Homepage and products"](https://github.com/viccyc/jungle-rails/blob/master/docs/Products.pages)
 !["Cart order items"](https://github.com/viccyc/jungle-rails/blob/master/docs/Cart%20order%20items.pages)
