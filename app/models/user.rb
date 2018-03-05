@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
   #   self.password_digest = @password
   # end
 
+  before_validation :downcase_email
+
   has_secure_password
 
   validates :first_name, presence: true
@@ -22,4 +24,10 @@ class User < ActiveRecord::Base
   validates :password, presence: true
   validates :password_confirmation, presence: true #password_confirmation attr
   # validates_length_of :password, in: 6..20, on: :create
+
+  private
+
+  def downcase_email
+    self.email = email.downcase if email.present?
+  end
 end
