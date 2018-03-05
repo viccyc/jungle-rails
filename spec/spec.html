@@ -1,0 +1,24 @@
+FF
+
+Failures:
+
+  1) #id should not exist for new records
+     Failure/Error: expect(@widget.id).to be_present
+       expected `nil.present?` to return true, got false
+     # ./spec/models/widget_spec.rb:6:in `block (2 levels) in <top (required)>'
+
+  2) #id should be auto-assigned by AR for saved records
+     Failure/Error: expect(@widget.id).to be_nil
+
+       expected: nil
+            got: 4
+     # ./spec/models/widget_spec.rb:13:in `block (2 levels) in <top (required)>'
+
+Finished in 0.06908 seconds (files took 4.13 seconds to load)
+2 examples, 2 failures
+
+Failed examples:
+
+rspec ./spec/models/widget_spec.rb:4 # #id should not exist for new records
+rspec ./spec/models/widget_spec.rb:9 # #id should be auto-assigned by AR for saved records
+
