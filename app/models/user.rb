@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   validates_format_of :email, :with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
   validates :password, presence: true
   validates :password_confirmation, presence: true #password_confirmation attr
-  # validates_length_of :password, in: 6..20, on: :create
+  validates_length_of :password, in: 6..20, on: :create
 
   private
 
