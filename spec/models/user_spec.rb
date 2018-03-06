@@ -69,7 +69,7 @@ RSpec.describe User, type: :model do
     it 'should throw a required error when the first_name parameter is missing from user creation' do
       @user = User.new(
                 last_name: 'Carver',
-                email: 'VICCY@VICCY.COM',
+                email: 'viccy@viccy.com',
                 password: 'xxxxxx',
                 password_confirmation: 'xxxxxx')
       @user.save
@@ -78,7 +78,7 @@ RSpec.describe User, type: :model do
     it 'should throw a required error when the first_name parameter is missing from user creation' do
       @user = User.new(
                 first_name: 'Viccy',
-                email: 'VICCY@VICCY.COM',
+                email: 'viccy@viccy.com',
                 password: 'xxxxxx',
                 password_confirmation: 'xxxxxx')
       @user.save
@@ -88,11 +88,45 @@ RSpec.describe User, type: :model do
       @user = User.new(
                 first_name: 'Viccy',
                 last_name: 'Carver',
-                email: 'VICCY@VICCY.COM',
+                email: 'viccy@viccy.com',
                 password: 'xxxx',
                 password_confirmation: 'xxxx')
       @user.save
       expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
     end
   end
+
+  describe '.authenticate_with_credentials' do
+    it 'should produce nil when the email/password combination is not correct on login' do
+      @user = User.new(
+                first_name: 'Viccy',
+                last_name: 'Carver',
+                email: 'viccy@viccy.com',
+                password: 'xxxxxx',
+                password_confirmation: 'xxxxxx')
+      @user.save!
+      expect(@user.authenticate_with_credentials('viccy@viccy.com','xxxxxxxxx')).to eql nil
+    end
+   it 'should be authenticated successfully when the email given has whitespaces before or after' do
+      @user = User.new(
+                first_name: 'Viccy',
+                last_name: 'Carver',
+                email: 'viccy@viccy.com',
+                password: 'xxxxxx',
+                password_confirmation: 'xxxxxx')
+      @user.save!
+      expect(@user.authenticate_with_credentials('   viccy@viccy.com    ','xxxxxx')).not_to eql nil
+    end
+   it 'should be authenticated successfully when the email given has mixed case' do
+      @user = User.new(
+                first_name: 'Viccy',
+                last_name: 'Carver',
+                email: 'viccy@viccY.cOM',
+                password: 'xxxxxx',
+                password_confirmation: 'xxxxxx')
+      @user.save!
+      expect(@user.authenticate_with_credentials('viCCy@viccy.com','xxxxxx')).not_to eql nil
+    end
+  end
 end
+
