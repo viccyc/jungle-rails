@@ -3,22 +3,19 @@ class SessionsController < ApplicationController
   end
 
   def create
-    puts "in the session create"
-    puts User.authenticate_with_credentials(params[:email], params[:password]
     if user = User.authenticate_with_credentials(params[:email], params[:password])
       # success logic, log them in
-      session[:user_id] = @user.id
-      redirect_to '/'
+      session[:user_id] = user.id
+      redirect_to root_path
     else
-      puts "in session create - params don't match"
       # failure, render login form
-      redirect_to '/login'
+      redirect_to login_path
     end
   end
 
   def destroy
     session[:user_id] = nil
-    redirect_to '/'
+    redirect_to root_path
   end
 end
 
