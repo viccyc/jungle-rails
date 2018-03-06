@@ -55,9 +55,6 @@ group :development do
   gem 'spring'
 end
 
-group :development, :test do
-  gem 'pry', '~> 0.10.4'
-end
 
 group :production do
   gem 'newrelic_rpm'
